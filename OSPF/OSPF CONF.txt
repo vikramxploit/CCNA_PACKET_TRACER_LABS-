@@ -1,0 +1,88 @@
+DELHI ROUTER
+
+conf t
+hostname DELHI
+int f0/0
+ip address 192.168.55.1 255.255.255.0
+no shut
+int f0/1
+ip address 192.168.78.1 255.255.255.0
+no shut
+
+int loopback 0
+ip address 192.168.100.1 255.255.255.0
+
+router opsf 1
+router-id 192.168.100.1
+int f0/0
+ip ospf 1 area 0
+int f0/1
+ip ospf 1 area 0
+
+*****************************************
+BANGLORE ROUTER
+
+conf t
+hostname BANGLORE
+int f0/0
+ip address 192.168.55.3 255.255.255.0
+no shut
+
+router opsf 1
+router id-192.168.100.3
+int f0/0
+ip ospf 1 area 0
+*****************************************
+
+HYDRABAD ROUTER
+
+conf t
+hostname HYDRABAD
+int f0/0
+ip address 192.168.55.2 255.255.255.0
+no shut
+
+router opsf 1
+router id-192.168.100.2
+int f0/0
+ip ospf 1 area 0
+
+*****************************************
+MUMBAI ROUTER
+
+conf t
+hostname MUMBAI
+int f0/0
+ip address 192.168.55.4 255.255.255.0
+no shut
+int f0/1
+ip address 192.168.45.1 255.255.255.0
+no shut
+int f1/0
+ip address 192.168.46.1 255.255.255.0
+no shut
+
+router opsf 1
+router id-192.168.100.4
+int f0/0
+ip ospf 1 area 0
+
+*****************************************
+
+**************************************
+AREA 51
+
+conf t
+hostname AREA 51
+int f0/1
+ip address 192.168.45.2 255.255.255.0
+no shut
+
+***************************************
+AREA 61
+
+conf t
+hostname AREA 61
+int f0/1
+ip address 192.168.46.2 255.255.255.0
+no shut

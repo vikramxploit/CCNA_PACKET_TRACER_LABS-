@@ -1,0 +1,141 @@
+R1
+
+ena 
+conf t
+hostname R1
+int f0/0
+ip address 50.0.0.1 255.0.0.0
+no shut
+int f0/0
+ip address 60.0.0.1 255.0.0.0
+no shut
+int ethernet 0/0/0
+ip address 70.0.0.1 255.0.0.0
+no shut
+
+router ospf 10
+network 60.0.0.0 0.255.255.255 area 0
+network 50.0.0.0 0.255.255.255 area 0
+network 70.0.0.0 0.255.255.255 area 0
+
+************************************
+R2
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 50.0.0.2 255.0.0.0
+no shut
+int f0/0
+ip address 20.0.0.2 255.0.0.0
+no shut
+int ethernet 0/0/0
+ip address 21.0.0.2 255.0.0.0
+no shut
+
+router ospf 10
+network 50.0.0.0 0.255.255.255 area 0
+************************************
+R2
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 60.0.0.2 255.0.0.0
+no shut
+int f0/0
+ip address 30.0.0.2 255.0.0.0
+no shut
+int ethernet 0/0/0
+ip address 31.0.0.2 255.0.0.0
+no shut
+
+************************************
+R3
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 70.0.0.2 255.0.0.0
+no shut
+int f0/0
+ip address 40.0.0.2 255.0.0.0
+no shut
+int ethernet 0/0/0
+ip address 41.0.0.2 255.0.0.0
+no shut
+
+
+router ospf 10
+network 60.0.0.0 0.255.255.255 area 0
+
+**********************************************
+AREA 1> R1
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 20.0.0.1 255.0.0.0
+no shut
+
+R2
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 21.0.0.1 255.0.0.0
+no shut
+
+
+**********************************************
+AREA 2> R1
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 30.0.0.1 255.0.0.0
+no shut
+
+R2
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 31.0.0.1 255.0.0.0
+no shut
+
+
+
+**********************************************
+AREA 3> R1
+
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 40.0.0.1 255.0.0.0
+no shut
+
+R2
+
+ena 
+conf t
+hostname R2
+int f0/0
+ip address 41.0.0.1 255.0.0.0
+no shut
+
+
